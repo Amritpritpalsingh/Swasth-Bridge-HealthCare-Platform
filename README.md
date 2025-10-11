@@ -127,5 +127,5 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 **Name:** Amritpirt pal singh
 
-**GitHub:** [github.com/yourusername](https://github.com/Amritpritpalsingh)  
-**Email:** [your.email@example.com](amritkps01@gmail.com)
+**GitHub:** [github.com/Amritpritpalsingh](https://github.com/Amritpritpalsingh)  
+**Email:** [amritkps01@gmail.com](amritkps01@gmail.com)
