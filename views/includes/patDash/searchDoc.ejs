@@ -1,0 +1,47 @@
+<!-- Book Appointment Modal -->
+<div class="modal fade" id="searchDocModal" tabindex="-1" aria-labelledby="searchDocModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchDocModalLabel">Book Appointment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <!-- Search Form -->
+        <form id="doctorSearchForm" class="d-flex mb-3">
+          <input 
+            id="schdoc-searchInput" 
+            type="search" 
+            placeholder="Search Doctor..." 
+            class="form-control me-2"
+          >
+
+          <div id="doctorMode" class="btn-group me-2" role="group">
+            <button type="button" class="btn btn-outline-primary" data-mode="offline">Offline</button>
+            <button type="button" class="btn btn-outline-primary" data-mode="online">Online</button>
+          </div>
+
+          <button type="submit" class="btn btn-primary">🔍</button>
+        </form>
+
+        <!-- Search Content -->
+        <div class="schdoc-search-content">
+          <h6 class="mb-3">Available Doctors</h6>
+          <div class="schdoc-doctor-list-scroll border-top mb-2 pt-2"></div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

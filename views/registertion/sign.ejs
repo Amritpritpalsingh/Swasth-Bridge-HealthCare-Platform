@@ -1,0 +1,80 @@
+<% layout("layouts/mainReg.ejs") %>
+
+<div class="card rounded-4 w-100 mx-auto" style="max-width: 380px;" id="signupPage">
+  <div class="card p-4 rounded-4 w-100">
+    <div class="logo text-center">SwasthBridge</div>
+    <h2 class="mb-1 text-center">Create Account</h2>
+    <p class="text-muted text-center">Sign up to get started.</p>
+
+    <!-- Role Selector -->
+    <div class="role-selector mb-3 d-flex justify-content-center gap-2 flex-wrap">
+      <button type="button" id="patientBtn" class="btn btn-outline-success active">Patient</button>
+      <button type="button" id="doctorBtn" class="btn btn-outline-success">Doctor</button>
+      <button type="button" id="pharmacyBtn" class="btn btn-outline-success" disabled>Pharmacy</button>
+    </div>
+
+    <!-- Signup Form -->
+    <form id="signupForm" action="/sb/auth/signup" method="POST">
+      <!-- Hidden role input -->
+      <input type="hidden" id="roleInput" name="role" value="Patient">
+
+      <!-- Extra field container (dynamic per role) -->
+      <div id="extraField">
+        <input type="text" name="name" placeholder="Full Name" class="form-control mb-2" required>
+      </div>
+
+      <!-- Common fields -->
+      <input type="email" name="email" class="form-control mb-2" placeholder="Email Address" required>
+      <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+      <input type="password" name="confirmPassword" class="form-control mb-3" placeholder="Confirm Password" required>
+      <button type="submit" class="btn btn-success w-100">Sign Up →</button>
+    </form>
+
+    <!-- Google Signup -->
+    <a id="googleSignupBtn" class="btn btn-outline-danger w-100 mt-2" href="/sb/auth/google?role=Patient">
+      Sign up with Google
+    </a>
+
+    <!-- Switch to Login -->
+    <div class="link-text mt-3 text-center">
+      Already have an account? <a href="/sb/auth/login">Login</a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const extraField = document.getElementById("extraField");
+  const roleInput = document.getElementById("roleInput");
+  const googleBtn = document.getElementById("googleSignupBtn");
+  const buttons = document.querySelectorAll(".role-selector button");
+
+  const roleFields = {
+    patientBtn: `<input type="text" name="name" placeholder="Full Name" class="form-control mb-2" required>`,
+    doctorBtn: `<small style="display:block; text-align:left; margin-bottom:6px; color:#555;">
+                  * Doctor login only needs email & password
+                </small>`,
+    pharmacyBtn: `<input type="text" name="pharmacyName" class="form-control mb-2" placeholder="Pharmacy Name" required>`
+  };
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      // Inject role-specific field
+      extraField.innerHTML = roleFields[btn.id];
+
+      // Update hidden input value
+      const selectedRole =
+        btn.id === "patientBtn" ? "Patient" :
+        btn.id === "doctorBtn" ? "Doctor" :
+        "Pharmacy";
+      roleInput.value = selectedRole;
+
+      // Update Google signup link
+      if (googleBtn) googleBtn.href = `/sb/auth/google?role=${selectedRole}`;
+    });
+  });
+});
+</script>

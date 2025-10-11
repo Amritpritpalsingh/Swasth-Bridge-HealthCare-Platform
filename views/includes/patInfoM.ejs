@@ -1,0 +1,52 @@
+<% if (user.role === "Doctor") { %>
+<div id="offlinePatientCard" class="card shadow-sm" style="
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 350px;
+    max-width: 500px;
+    width: 90%;
+    z-index: 1050;
+    display: none;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
+    border-radius: 0.5rem;
+">
+  <div class="card-body d-flex flex-column gap-3">
+    <!-- Close button -->
+    <button type="button" class="btn-close align-self-end" id="closeOfflinePatientCard" aria-label="Close"></button>
+ <input type="text" class="form-control form-control-sm mt-1" hidden id="offlineID" readonly>
+    <!-- Patient Info Header -->
+    <h5 class="card-title text-start mb-2">
+      Patient Name:
+      <input type="text" class="form-control form-control-sm mt-1" id="offlinePatientName" readonly>
+    </h5>
+    <h6 class="card-subtitle text-muted mb-3 text-start">
+      PID:
+      <input type="text" class="form-control form-control-sm mt-1" id="offlinePID" readonly>
+    </h6>
+
+    <!-- Patient Notes -->
+    <div class="mb-3 text-start">
+      <label for="offlineChiefComplaint" class="form-label"><strong>Chief Complaint:</strong></label>
+      <textarea class="form-control form-control-sm" id="offlineChiefComplaint" rows="3" placeholder="Enter chief complaint"></textarea>
+    </div>
+    <div class="mb-3 text-start">
+      <label for="offlineDiagnosis" class="form-label"><strong>Diagnosis:</strong></label>
+      <textarea class="form-control form-control-sm" id="offlineDiagnosis" rows="3" placeholder="Enter diagnosis"></textarea>
+    </div>
+    <div class="mb-3 text-start">
+      <label for="offlinePrescription" class="form-label"><strong>Prescription:</strong></label>
+      <textarea class="form-control form-control-sm" id="offlinePrescription" rows="3" placeholder="Enter prescription"></textarea>
+    </div>
+    <div class="mb-3 text-start">
+      <label for="offlinePaymentAmount" class="form-label"><strong>Payment Amount (₹):</strong></label>
+      <input type="number" class="form-control form-control-sm" id="offlinePaymentAmount" placeholder="Enter amount to request" min="1">
+    </div>
+    <!-- Save Button -->
+    <button class="btn btn-primary btn-sm w-100" id="saveOfflinePatientBtn">Save</button>
+  </div>
+</div>
+<% } %>

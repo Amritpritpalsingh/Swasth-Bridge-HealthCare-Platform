@@ -1,0 +1,28 @@
+/* Table card height + sticky header for desktops */
+.card.table-card {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.table-card .table-responsive {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+#patientsTable thead th {
+  position: sticky;
+  top: 0;
+  background: var(--bs-success-bg-subtle);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .card.table-card {
+    height: auto;
+  }
+  .card.table-card .table-responsive {
+    max-height: none;
+    overflow-y: visible;
+  }
+}

@@ -1,0 +1,43 @@
+<!-- Search Pharmacy Modal -->
+<div class="modal fade" id="searchPharmacyModal" tabindex="-1" aria-labelledby="searchPharmacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchPharmacyModalLabel">Search Pharmacy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <!-- Search Form -->
+        <form id="pharmacySearchForm" class="d-flex mb-3">
+          <input 
+            id="pharmacy-searchInput" 
+            type="search" 
+            placeholder="Search Pharmacy..." 
+            class="form-control me-2"
+          >
+          <button type="submit" class="btn btn-primary">🔍</button>
+        </form>
+
+        <!-- Search Content -->
+        <div class="pharmacy-search-content">
+          <h6 class="mb-3">Available Pharmacies</h6>
+          <div class="pharmacy-list-scroll border-top mb-2 pt-2" style="max-height: 300px; overflow-y: auto;">
+            <!-- Pharmacy cards will be dynamically added here -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

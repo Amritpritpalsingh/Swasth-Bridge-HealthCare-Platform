@@ -1,0 +1,34 @@
+<!-- Pharmacy Order Modal -->
+<div class="modal fade" id="pharmacyOrderModal" tabindex="-1" aria-labelledby="pharmacyOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="pharmacyOrderModalLabel">Order from Pharmacy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p><strong>Pharmacy:</strong> <span id="orderPharmacyName"></span></p>
+        <div class="mb-3">
+          <label for="deliveryTime" class="form-label">Select Delivery Time</label>
+          <input type="time" id="deliveryTime" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="medicineCost" class="form-label">Rupees</label>
+          <input type="number" id="medicineCost" class="form-control" placeholder="Enter total cost">
+        </div>
+        <div class="mb-3">
+          <label for="deliveryAddressPharmacy" class="form-label">Delivery Address</label>
+          <textarea id="deliveryAddressPharmacy" class="form-control" placeholder="Enter delivery address"></textarea>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" id="confirmPharmacyOrderBtn">Confirm Order</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+
+    </div>
+  </div>
+</div>

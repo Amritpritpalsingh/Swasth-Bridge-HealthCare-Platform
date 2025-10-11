@@ -1,0 +1,79 @@
+<!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="profileModalLabel">👤 Personal Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Profile Card -->
+        <div class="card mb-3">
+          <div class="row g-0 align-items-center">
+
+            <!-- Profile Picture -->
+            <div class="col-12 col-md-4 text-center p-3">
+              <div class="profile-pic-wrapper shadow-sm border rounded overflow-hidden" 
+                   style="width: 100%; height: 300px; border-radius: 12px;">
+                <img 
+                  src="" 
+                  alt="Profile Picture" 
+                  class="img-fluid profile-pic" 
+                  style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                  id="profileModalPic"
+                />
+              </div>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="col-12 col-md-8">
+              <div class="card-body text-center text-md-start">
+                <h5 class="card-title profile-name text-primary"></h5>
+                <span class="badge bg-secondary profile-uid"></span>
+
+                <ul class="list-group list-group-flush mt-3 profile-details text-start">
+                  <li class="list-group-item profile-age-row"><strong>Age:</strong> <span class="profile-age"></span></li>
+                  <li class="list-group-item"><strong>Gender:</strong> <span class="profile-gender"></span></li>
+                  <li class="list-group-item profile-blood-row"><strong>Blood Group:</strong> <span class="profile-blood"></span></li>
+                  <li class="list-group-item"><strong>Phone:</strong> <span class="profile-phone"></span></li>
+                  <li class="list-group-item"><strong>Email:</strong> <span class="profile-email"></span></li>
+                  <li class="list-group-item"><strong>Address:</strong> <span class="profile-address"></span></li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 modal-actions">
+          <% if (currUser && currUser._id.toString() === user._id.toString()) { %>
+            <button class="btn btn-secondary w-50 w-sm-auto edit-profile-btn"
+                    data-role="<%=user.role %>"
+                    data-user='<%- JSON.stringify(user) %>'>
+              Edit
+            </button>
+          <% } else { %>
+            <button id="vn-openVideoModal" 
+                    class="btn btn-primary w-50 w-sm-auto"  
+                    data-bs-toggle="modal" 
+                    data-bs-target="#videoConsultationModal">
+              🎥 Start Video Consultation
+            </button>
+          <% } %>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  window.currUserId = "<%= user ? user._id.toString() : '' %>";
+</script>

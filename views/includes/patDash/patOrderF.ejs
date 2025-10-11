@@ -1,0 +1,36 @@
+<div class="modal fade" id="medicineOrderModal" tabindex="-1" aria-labelledby="medicineOrderModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="medicineOrderModalLabel">Order <span id="selectedMedicine">Medicine</span></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <form id="medicineOrderForm">
+         
+
+          <div class="mb-3">
+            <label for="deliveryAddress" class="form-label">Delivery Address</label>
+            <textarea class="form-control" id="deliveryAddress" placeholder="Enter your delivery address"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="prescription" class="form-label">Upload Prescription (Optional)</label>
+            <input type="file" class="form-control" id="prescription">
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary w-100" id="confirmOrderBtn">Confirm Order</button>
+      </div>
+
+    </div>
+  </div>
+</div>

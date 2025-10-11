@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Medicine List</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<style>
+  :root {
+    --primary: #20c997; /* Teal Green */
+    --secondary: #0f766e; /* Deep Teal */
+    --light: #ffffff;
+    --background: #f6fffb; /* Light minty background */
+    --gray: #6b7280;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    background: var(--background);
+    color: #1e293b;
+  }
+
+  header {
+    height: 60px;
+    background: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    color: #fff;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  /* Page Title + Add Button */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .page-header h2 {
+    font-size: 1.5rem;
+    color: var(--secondary);
+  }
+  .add-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .add-btn:hover {
+    background: var(--secondary);
+  }
+
+  /* Search Input */
+  #searchInput {
+    padding: 0.5rem 1rem;
+    border: 1px solid #10b981;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* Medicine Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--light);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  th,
+  td {
+    padding: 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  th {
+    background: #d1fae5;
+    color: var(--secondary);
+  }
+  tr:nth-child(even) {
+    background: #f0fdf4;
+  } /* light green stripe */
+
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .modal-header h3 {
+    color: var(--secondary);
+  }
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--gray);
+  }
+  .modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .modal input,
+  .modal select {
+    padding: 0.6rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+  .submit-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .submit-btn:hover {
+    background: var(--secondary);
+  }
+</style>
+</head>
+<body>
+  <header>
+    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+    <div class="logo">Pharmeasy - Medicines</div>
+    <div></div>
+  </header>
+
+  <div class="container">
+    <div class="page-header">
+      <h2>Available Medicines</h2>
+      <div>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search medicine..."
+        />
+        <button class="add-btn" id="openModal"
+          ><i class="fas fa-plus"></i> Add Medicine</button
+        >
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Medicine Name</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="medicineTable">
+        <tr>
+          <td>Paracetamol</td>
+          <td>Pain Relief</td>
+          <td>120</td>
+          <td>₹25</td>
+        </tr>
+        <tr>
+          <td>Amoxicillin</td>
+          <td>Antibiotic</td>
+          <td>80</td>
+          <td>₹50</td>
+        </tr>
+        <tr>
+          <td>Metformin</td>
+          <td>Diabetes</td>
+          <td>200</td>
+          <td>₹35</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal Form -->
+  <div class="modal" id="medicineModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Medicine</h3>
+        <button class="close-btn" id="closeModal">&times;</button>
+      </div>
+      <form id="medicineForm">
+        <input type="text" id="medName" placeholder="Medicine Name" required />
+        <select id="medCategory" required>
+          <option value="" disabled selected>Select Category</option>
+          <option value="Pain Relief">Pain Relief</option>
+          <option value="Antibiotic">Antibiotic</option>
+          <option value="Diabetes">Diabetes</option>
+          <option value="Hypertension">Hypertension</option>
+          <option value="Acidity">Acidity</option>
+        </select>
+        <input
+          type="number"
+          id="medStock"
+          placeholder="Stock Quantity"
+          required
+          min="0"
+        />
+        <input
+          type="number"
+          id="medPrice"
+          placeholder="Price (₹)"
+          required
+          min="0"
+          step="0.01"
+        />
+        <button type="submit" class="submit-btn">Add Medicine</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("medicineModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+    const form = document.getElementById("medicineForm");
+    const table = document.getElementById("medicineTable");
+    const searchInput = document.getElementById("searchInput");
+
+    searchInput.addEventListener("input", () => {
+      const filter = searchInput.value.toLowerCase();
+      const rows = table.getElementsByTagName("tr");
+      for (let i = 0; i < rows.length; i++) {
+        const firstCell = rows[i].getElementsByTagName("td")[0];
+        if (firstCell) {
+          const txtValue = firstCell.textContent || firstCell.innerText;
+          rows[i].style.display = txtValue.toLowerCase().includes(filter)
+            ? ""
+            : "none";
+        }
+      }
+    });
+
+    openBtn.addEventListener("click", () => {
+      modal.style.display = "flex";
+    });
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("medName").value;
+      const category = document.getElementById("medCategory").value;
+      const stock = document.getElementById("medStock").value;
+      const price = document.getElementById("medPrice").value;
+
+      const newRow = `<tr>
+            <td>${name}</td>
+            <td>${category}</td>
+            <td>${stock}</td>
+            <td>₹${price}</td>
+        </tr>`;
+
+      table.insertAdjacentHTML("beforeend", newRow);
+      form.reset();
+      modal.style.display = "none";
+    });
+  </script>
+</body>
+</html>

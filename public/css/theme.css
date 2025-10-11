@@ -1,0 +1,540 @@
+/* 🌈 UNIVERSAL THEME SYSTEM (Light + Dark Mode) */
+
+/* ========= BASE STYLES ========= */
+:root {
+  --bg-light: #ffffff;
+  --bg-lighter: #f8f9fa;
+  --bg-dark: #121212;
+  --bg-darker: #1e1e1e;
+
+  --text-dark: #212529;
+  --text-light: #f8f9fa;
+  --text-muted-light: #6c757d;
+  --text-muted-dark: #b3b3b3;
+
+  --border-light: #dee2e6;
+  --border-dark: #333;
+
+  --accent-green: #28a745;
+  --accent-green-hover: #218838;
+  --transition-speed: 0.3s;
+}
+
+/* Smooth transitions for theme changes */
+body, .card, .sidebar, .topbar, .section-card, .feature-btn, .modal-content, .form-control, .offcanvas {
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+}
+
+/* ========= LIGHT MODE ========= */
+body {
+  background-color: var(--bg-lighter);
+  color: var(--text-dark);
+}
+
+.topbar {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border-right: 1px solid var(--border-light);
+}
+
+.sidebar .nav-link {
+  color: var(--text-dark);
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: var(--bg-lighter);
+  color: var(--accent-green);
+}
+
+.section-card,
+.card,
+.modal-content {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+}
+
+.inner-card {
+  background-color: var(--bg-lighter);
+  border: 1px solid var(--border-light);
+}
+
+.feature-btn {
+  background-color: var(--bg-lighter);
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+}
+
+.feature-btn:hover {
+  background-color: var(--bg-light);
+}
+
+.text-muted {
+  color: var(--text-muted-light) !important;
+}
+
+/* ========= DARK MODE ========= */
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+body.dark-mode .topbar {
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+body.dark-mode .sidebar {
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  border-right: 1px solid var(--border-dark);
+}
+
+body.dark-mode .sidebar .nav-link {
+  color: var(--text-light);
+}
+
+body.dark-mode .sidebar .nav-link:hover,
+body.dark-mode .sidebar .nav-link.active {
+  background-color: var(--bg-dark);
+  color: var(--accent-green);
+}
+
+body.dark-mode .section-card,
+body.dark-mode .card,
+body.dark-mode .modal-content {
+  background-color: var(--bg-darker) !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-dark) !important;
+}
+
+body.dark-mode .inner-card {
+  background-color: var(--bg-dark) !important;
+  border: 1px solid var(--border-dark) !important;
+  color: var(--text-light) !important;
+}
+
+body.dark-mode .feature-btn {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
+}
+
+body.dark-mode .feature-btn:hover {
+  background-color: var(--bg-darker);
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #2a2a2a;
+  color: var(--text-light);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .form-control::placeholder {
+  color: #aaa;
+}
+
+body.dark-mode .btn-outline-secondary {
+  color: var(--text-light);
+  border-color: var(--border-dark);
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #fff;
+}
+
+body.dark-mode small.text-muted {
+  color: var(--text-muted-dark) !important;
+}
+
+/* ========= FEEDBACK CARD ========= */
+#feedbackCard {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  max-width: 350px;
+}
+
+body.dark-mode #feedbackCard {
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  border-color: var(--border-dark);
+}
+
+/* ========= OFFCANVAS (Mobile Sidebar) ========= */
+.offcanvas {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+body.dark-mode .offcanvas {
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+}
+
+/* ========= UTILITIES ========= */
+.btn-success {
+  background-color: var(--accent-green);
+  border-color: var(--accent-green);
+}
+
+.btn-success:hover {
+  background-color: var(--accent-green-hover);
+}
+
+.text-success {
+  color: var(--accent-green) !important;
+}
+
+.border {
+  border-color: var(--border-light) !important;
+}
+
+body.dark-mode .border {
+  border-color: var(--border-dark) !important;
+}
+
+/* ========= RESPONSIVENESS ========= */
+@media (max-width: 576px) {
+  #feedbackCard {
+    width: 90%;
+    bottom: 10px;
+    right: 5%;
+  }
+}
+#themeOptions {
+  transition: all 0.3s ease;
+}
+
+#themeOptions .btn {
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+body.dark-mode #themeOptions .btn-light {
+  background-color: #333;
+  color: #fff;
+}
+body.dark-mode .modal-content {
+  background-color: #1c1c1c;
+  color: #f1f1f1;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-body {
+  background-color: #1c1c1c;
+  color: #f1f1f1;
+}
+
+body.dark-mode .list-group-item {
+  background-color: #2a2a2a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+/* Feature button (Top Doctor Card) */
+.feature-btn {
+  background-color: #f8f9fa; /* light mode default */
+  color: #000;
+}
+
+body.dark-mode .feature-btn {
+  background-color: #1e1e2f;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+body.dark-mode .feature-btn .text-muted {
+  color: #bbb;
+}
+
+body.dark-mode .feature-btn:hover {
+  background-color: #2a2a3f;
+}
+/* Patient table & cards */
+.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Table rows */
+#patientsTable.table-dark tbody tr {
+  background-color: #2a2a3f !important;
+  color: #e0e0e0 !important;
+}
+
+#patientsTable.table-dark thead th {
+  background-color: #2a2a3f !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+/* Mobile cards */
+#patientsCardListBody .card.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+/* Dark mode table card */
+#patientsTable.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Table head */
+#patientsTable.dark-mode-card thead th {
+  background-color: #2a2a3f !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+/* Table body rows */
+#patientsTable.dark-mode-card tbody tr {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Optional: dark striped rows */
+#patientsTable.dark-mode-card tbody tr:nth-child(even) {
+  background-color: #27273f !important;
+}
+/* Force dark-mode card */
+.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Mobile cards */
+#patientsCardListBody .card.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Table head fallback */
+#patientsTable.dark-mode-card thead th {
+  background-color: #2a2a3f !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+/* Desktop Table */
+#patientsTable.dark-mode-card,
+#patientsTable.dark-mode-card tbody,
+#patientsTable.dark-mode-card tr,
+#patientsTable.dark-mode-card td,
+#patientsTable.dark-mode-card th {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+
+/* Table header */
+#patientsTable.dark-mode-card thead th {
+  background-color: #2a2a3f !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+/* Table rows striped fallback */
+#patientsTable.dark-mode-card tbody tr:nth-child(even) {
+  background-color: #27273f !important;
+}
+
+/* Mobile Cards */
+#patientsCardListBody .card.dark-mode-card {
+  background-color: #1e1e2a !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
+}
+  #settingsCard .btn {
+    border-radius: 8px; /* Rounded corners */
+    border-width: 2px; 
+    padding: 0.4rem 0.6rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Language and Theme buttons */
+  #settingsCard #languageBtn,
+  #settingsCard #themeBtn {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+  }
+
+  #settingsCard #languageBtn:hover,
+  #settingsCard #themeBtn:hover {
+    background-color: #28a745; /* darker green hover */
+    color: #fff;
+    border-color: #218838; /* slightly darker border on hover */
+  }
+
+  /* Feedback button */
+  #settingsCard #feedbackBtn {
+    border-color: #17a2b8;
+    color: #17a2b8;
+  }
+
+  #settingsCard #feedbackBtn:hover {
+    background-color: #138496; /* darker teal hover */
+    color: #fff;
+    border-color: #117a8b;
+  }
+
+  /* Edit Profile button */
+  #settingsCard #editProfileBtn {
+    border-color: #ffc107;
+    color: #ffc107;
+  }
+
+  #settingsCard #editProfileBtn:hover {
+    background-color: #e0a800; /* darker yellow hover */
+    color: #fff;
+    border-color: #d39e00;
+  }
+
+  /* Logout button */
+  #settingsCard #logoutBtn {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+
+  #settingsCard #logoutBtn:hover {
+    background-color: #c82333; /* darker red hover */
+    color: #fff;
+    border-color: #bd2130;
+  }
+
+ #paymentsTable.dark-mode-card,
+#paymentsTable.dark-mode-card tbody,
+#paymentsTable.dark-mode-card tr,
+#paymentsTable.dark-mode-card td,
+#paymentsTable.dark-mode-card th {
+  background-color: #1e1e2a !important;  /* dark row background */
+  color: #e0e0e0 !important;             /* text color */
+  border-color: #333 !important;         /* border color */
+}
+
+/* Table header */
+#paymentsTable.dark-mode-card thead th {
+  background-color: #2a2a3f !important;  /* darker header */
+  color: #fff !important;
+  border-color: #555 !important;
+}
+
+/* Table body striped rows */
+#paymentsTable.dark-mode-card tbody tr:nth-child(even) {
+  background-color: #27273f !important;  /* slightly lighter stripe */
+}
+
+/* Table hover effect */
+#paymentsTable.dark-mode-card tbody tr:hover {
+  background-color: #2a2a3f !important;  /* row hover */
+}
+
+/* Links inside table (like screenshot link) */
+#paymentsTable.dark-mode-card a {
+  color: #4dabf7; /* blue-ish link color */
+}
+
+#paymentsTable.dark-mode-card a:hover {
+  color: #74c0fc;
+  text-decoration: underline;
+}
+
+/* Badges */
+#paymentsTable.dark-mode-card .badge {
+  opacity: 0.9;
+}
+
+/* Wrapper around tbody for scrolling */
+
+
+/* Table layout adjustments */
+#paymentsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+/* Make tbody scrollable */
+#paymentsTableBody {
+  
+  max-height: 80vh; /* same as wrapper */
+  overflow-y: auto;
+}
+
+/* Sticky table header */
+#paymentsTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #2a2a3f; /* dark header */
+  color: #fff;
+  z-index: 5;
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}
+
+/* Wrapper for vertical scroll */
+#paymentsTableWrapper {
+  max-height: 80vh; /* adjust height */
+  overflow-y: auto;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+}
+
+/* Table layout */
+#paymentsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Sticky header */
+#paymentsTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #2a2a3f; /* dark header */
+  color: #fff;
+  z-index: 10;
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}
+
+/* Table body rows */
+#paymentsTable tbody tr {
+  background-color: #1e1e2a;
+}
+
+#paymentsTable tbody tr:nth-child(even) {
+  background-color: #27273f;
+}
+
+#paymentsTable tbody tr:hover {
+  background-color: #2a2a3f;
+}
+
+/* Links inside table */
+#paymentsTable a {
+  color: #4dabf7;
+}
+
+#paymentsTable a:hover {
+  color: #74c0fc;
+  text-decoration: underline;
+}

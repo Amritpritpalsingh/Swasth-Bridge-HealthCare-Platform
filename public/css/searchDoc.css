@@ -1,0 +1,25 @@
+/* Mobile friendly */
+@media (max-width: 576px) {
+  #searchDocModal .modal-dialog {
+    margin: 0.5rem;
+  }
+  #searchDocModal .modal-content {
+    border-radius: 12px;
+  }
+}
+
+/* Expandable doctor card */
+.doctor-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.doctor-card.expanded {
+  background: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* Scrollable list */
+.schdoc-doctor-list-scroll {
+  max-height: 250px;   /* only first few visible, rest scroll */
+  overflow-y: auto;
+}

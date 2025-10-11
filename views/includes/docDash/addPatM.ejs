@@ -1,0 +1,68 @@
+<div class="modal fade" id="patientModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <form class="modal-content" id="patientForm">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Patient</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- PID Search -->
+        <div class="row g-3">
+          <div class="col-md-8">
+            <label class="form-label">PID</label>
+            <input id="f-pid" class="form-control" placeholder="Enter Patient ID">
+          </div>
+          <div class="col-md-4 d-flex align-items-end">
+            <button id="searchPIDBtn" type="button" class="btn btn-primary w-100">Search</button>
+          </div>
+        </div>
+
+        <!-- Collapsible patient form -->
+        <div id="patientDetailsCollapse" class="collapse mt-3">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input id="f-name" class="form-control" readonly  required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Age</label>
+              <input id="f-age" type="number" class="form-control" readonly  required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Gender</label>
+              <select id="f-gender" class="form-select" readonly required>
+                <option value="">Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Chief Complaint</label>
+              <input id="f-complain" class="form-control" required>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Diagnosis</label>
+              <input id="f-diagnosis" class="form-control" required>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label">Prescription</label>
+              <input id="f-prescription" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Payment Amount (₹)</label>
+              <input id="f-paymentAmount" type="number" class="form-control" placeholder="Enter amount" min="1" required>
+            </div>
+         
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="addPatientBtn" type="submit" class="btn btn-success d-none">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

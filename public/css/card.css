@@ -1,0 +1,5 @@
+.card .scroll-list {
+ flex-grow: 1;          /* take remaining space */
+  overflow-y: auto;      /* enable scrolling */
+  max-height: 190px;
+}

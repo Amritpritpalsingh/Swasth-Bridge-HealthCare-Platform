@@ -1,0 +1,18 @@
+ /* Default (desktop/laptop) */
+  .small-video-container {
+    width: 180px;
+    height: 120px;
+  }
+
+  /* Mobile (≤576px) */
+  @media (max-width: 576px) {
+    .small-video-container {
+      width: 100px;
+      height: 70px;
+    }
+  }
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: inherit !important;
+}

@@ -1,0 +1,80 @@
+<%- layout("layouts/mainPat.ejs") %>
+
+<div class="container-fluid px-2 px-sm-3 py-3 me-3">
+
+  <input type="hidden" id="userRole" value="<%= user ? user.role : '' %>">
+  <input type="hidden" id="userSocketId" value="<%= user ? user._id : '' %>">
+  <input type="hidden" id="PID" value="<%= user ? user._id : '' %>">
+
+  <!-- WELCOME SECTION -->
+  <section class="p-3 mb-3 rounded shadow-sm section-card">
+    <h1 class="text-success fs-5 mb-2">
+      Welcome, <%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %> 👋
+    </h1>
+    <p class="small mb-3">Your health is our priority. Access all healthcare services in one place.</p>
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center p-3 rounded border inner-card">
+      <div class="mb-2 mb-sm-0 text-center text-sm-start">
+        <h6 class="mb-1">Your Patient ID</h6>
+        <p class="fs-6 fw-bold text-success mb-0"><%= user.PID %></p>
+        <small class="text-muted">Share this ID with your doctor.</small>
+      </div>
+      <i class="fas fa-id-card fa-2x text-success"></i>
+    </div>
+  </section>
+
+  <!-- TOP DOCTORS -->
+  <section class="p-3 mb-3 rounded shadow-sm section-card">
+    <h5 class="mb-3">Top Doctors</h5>
+    <div id="topDoctorsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-wrap="true">
+      <div class="carousel-inner" id="doctorsCarouselInner"></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#topDoctorsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#topDoctorsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="row g-2 mb-3">
+    <div class="col-12 col-sm-6 col-md-4">
+      <a class="btn feature-btn text-center p-3 w-100 shadow-sm rounded-3" href="/sb/pat/appointments">
+        <i class="fas fa-video fa-lg text-success mb-1"></i>
+        <div class="fw-semibold">Video Consult</div>
+        <small class="text-muted">Call doctor</small>
+      </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4">
+      <button class="btn feature-btn text-center p-3 w-100 shadow-sm rounded-3" type="button" data-bs-toggle="modal" data-bs-target="#reportsModal">
+        <i class="fas fa-file-medical fa-lg text-success mb-1"></i>
+        <div class="fw-semibold">Reports</div>
+        <small class="text-muted">&nbsp;</small>
+      </button>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4">
+      <button class="btn feature-btn text-center p-3 w-100 shadow-sm rounded-3 disabled" type="button" disabled>
+        <i class="fas fa-video fa-lg text-success mb-1"></i>
+        <div class="fw-semibold">Coming soon...</div>
+        <small class="text-muted">...</small>
+      </button>
+    </div>
+  </section>
+
+  <!-- APPOINTMENTS -->
+  <section class="p-3 mb-3 rounded shadow-sm section-card">
+    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-2">
+      <h5 class="mb-2 mb-sm-0">Appointments</h5>
+      <% if (user.PID) { %>
+        <button class="btn btn-success w-20 w-sm-20 px-4" data-bs-toggle="modal" data-bs-target="#searchDocModal">
+          Book Now
+        </button>
+      <% } %>
+    </div>
+    <p class="small text-muted mb-0">Find a doctor and schedule your visit with ease.</p>
+  </section>
+
+</div>

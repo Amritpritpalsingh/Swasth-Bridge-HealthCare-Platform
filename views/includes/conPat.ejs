@@ -1,0 +1,129 @@
+<!-- Video Consultation Modal -->
+<div class="modal fade" id="videoConsultationModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content bg-light text-dark">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Video Consultation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="endVideo()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-3">
+          
+          <!-- Video Section -->
+          <div class="col-12 col-lg-7 order-lg-1">
+            <div class="d-flex flex-column gap-3">
+              <div class="position-relative">
+                <video id="mainVideo" autoplay playsinline class="w-100 rounded shadow-sm bg-black"></video>
+                <video id="smallVideo" autoplay playsinline muted 
+                       class="position-absolute bottom-0 end-0 m-2 border border-2 rounded small-video bg-black"></video>
+              </div>
+
+              <div class="d-flex justify-content-center gap-2 mt-2">
+                <button id="end" class="btn btn-danger d-none" onclick="endVideo()">
+                  <i class="bi bi-telephone-x"></i> End Video
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Patient Info Card (Doctor only) -->
+          <% if (user.role === "Doctor") { %>
+          <div class="col-12 col-lg-5 order-lg-2  d-lg-flex justify-content-center align-items-start">
+            <div class="card shadow-sm w-100" style="min-width: 350px; max-width: 500px; height: 95%;">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title text-start mb-3">
+                    Patient Name: 
+                    <input type="text" class="form-control form-control-sm text-start mt-1" readonly id="inputPatientName">
+                  </h5>
+                  <h6 class="card-subtitle mb-3 text-muted text-start">
+                    PID: 
+                    <input type="text" class="form-control form-control-sm text-start mt-1" readonly id="inputPID">
+                  </h6>
+                  <div class="mb-3 text-start">
+                    <label for="inputChiefComplaint" class="form-label"><strong>Chief Complaint:</strong></label>
+                    <textarea class="form-control form-control-sm text-start" id="inputChiefComplaint" rows="3" placeholder="Enter chief complaint"></textarea>
+                  </div>
+                  <div class="mb-3 text-start">
+                    <label for="inputDiagnosis" class="form-label"><strong>Diagnosis:</strong></label>
+                    <textarea class="form-control form-control-sm text-start" id="inputDiagnosis" rows="3" placeholder="Enter diagnosis"></textarea>
+                  </div>
+                  <div class="mb-3 text-start">
+                    <label for="inputPrescription" class="form-label"><strong>Prescription:</strong></label>
+                    <textarea class="form-control form-control-sm text-start" id="inputPrescription" rows="3" placeholder="Enter prescription"></textarea>
+                  </div>
+                </div>
+               <div class="mb-3 text-start">
+                  <label for="inputPaymentAmount" class="form-label"><strong>Payment Amount (₹):</strong></label>
+                  <input 
+                    type="number" 
+                    class="form-control form-control-sm text-start" 
+                    id="inputPaymentAmount" 
+                    placeholder="Enter amount to request" 
+                    min="1"
+                  >
+                </div>
+
+                
+                <button class="btn btn-primary btn-sm w-100 mt-2" id="savePatientInfoBtn">Save</button>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+#mainVideo {
+  height: 600px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Small video preview */
+.small-video {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1200px) {
+  .small-video {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 992px) {
+  #mainVideo {
+    height: 500px !important;
+  }
+  .d-lg-flex {
+    display: none !important; /* hide patient card on tablet/mobile */
+  }
+  .small-video {
+    width: 120px !important;
+    height: 120px !important;
+  }
+}
+
+@media (max-width: 868px) {
+  #mainVideo {
+    height: 400px !important;
+  }
+  .small-video {
+    width: 100px !important;
+    height: 100px !important;
+  }
+}
+</style>
+

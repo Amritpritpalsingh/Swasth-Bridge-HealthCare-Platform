@@ -1,0 +1,29 @@
+<div id="feedbackCard" class="card shadow-sm p-3 position-fixed"
+     style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 400px; z-index: 1100; display: none;">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="card-title mb-0">Feedback</h5>
+    <button type="button" class="btn-close" id="closeFeedbackCard" aria-label="Close"></button>
+  </div>
+  
+  <form id="feedbackForm">
+    <input type="hidden" name="userId" value="<%= user ? user._id : '' %>">
+    <input type="hidden" name="role" value="<%= user ? user.role : '' %>">
+    
+    <div class="mb-2">
+      <label for="feedbackName" class="form-label small">Your Name</label>
+      <input type="text" class="form-control form-control-sm" id="feedbackName" placeholder="Name"
+             value="<%= user ? user.name : '' %>" required>
+    </div>
+    <div class="mb-2">
+      <label for="feedbackEmail" class="form-label small">Email</label>
+      <input type="email" class="form-control form-control-sm" id="feedbackEmail" placeholder="Email"
+             value="<%= user ? user.email : '' %>" required>
+    </div>
+    <div class="mb-2">
+      <label for="feedbackMessage" class="form-label small">Message</label>
+      <textarea class="form-control form-control-sm" id="feedbackMessage" rows="3" placeholder="Write your feedback..." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary w-100">Send Feedback</button>
+  </form>
+  <div id="feedbackToastContainer" class="position-absolute top-0 end-0 mt-2 me-2"></div>
+</div>

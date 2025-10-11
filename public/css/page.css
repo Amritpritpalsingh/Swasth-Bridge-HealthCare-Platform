@@ -1,0 +1,75 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f8f9fa;
+}  
+
+.page {
+  display: none;
+}
+.page.active {
+  display: block;
+}
+* {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE & Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari */
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  overflow-x: hidden;
+}
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+}
+.topbar {
+  z-index: 1030; /* keeps it above modals/sidebars */
+  height: 56px;  /* consistent height */
+}
+
+.list-group-item-hover:hover {
+  background-color: #f8f9fa; /* light gray on hover */
+}
+  .custom-link {
+    font-size: 1.1rem;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    display: block;
+    width: 100%;
+  }
+
+  .custom-link:hover {
+    color: #0d6efd;
+    background: #f8f9fa;
+    border-radius: 6px;
+  }
+
+  /* Button behaves exactly like an <a> */
+  .btn-link-like {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .btn-link-like:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  #patientCardContainer.collapsing,
+#patientCardContainer.collapse.show {
+  display: flex !important;
+  flex-direction: column;
+}

@@ -1,0 +1,33 @@
+  /* Card and logo */
+  .card { border: none; }
+  .logo { font-size: 26px; font-weight: 600; color: #0a7d6b; margin-bottom: 10px; }
+
+  /* Role buttons */
+  .role-selector .btn.active {
+    background-color: #0a7d6b;
+    color: white;
+    border-color: #0a7d6b;
+  }
+  .role-selector .btn { transition: all 0.2s ease; }
+
+  /* Responsive */
+  @media (max-width: 576px) {
+    .card { max-width: 95%; padding: 1.5rem; }
+    .role-selector .btn { flex: 1 1 auto; font-size: 14px; }
+  }
+
+    /* Ensure card is centered on all devices */
+  #loginWrapper {
+    background: #f8f9fa; /* subtle background */
+  }
+  .google-btn {
+    background: #fff;
+    transition: 0.2s;
+  }
+  .google-btn:hover {
+    background: #f1f1f1;
+  }
+  @media (max-width: 576px) {
+    #loginPage {
+      padding: 2rem 1.5rem;
+    }}

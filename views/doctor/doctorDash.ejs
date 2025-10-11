@@ -1,0 +1,100 @@
+<%- layout("layouts/mainDoc.ejs") %>
+<div class="container py-4">
+  <!-- DASHBOARD -->
+  <input type="hidden" id="userSocketId" value="<%= user ? user._id : '' %>">
+  <input type="hidden" id="userRole" value="<%= user ? user.role : '' %>">
+  
+  <section id="dashboard" class="d-flex flex-column">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-8"> <!-- Centered Column -->
+
+        <!-- Top Stats -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <small>Total Patients</small>
+              <h3 id="totalPatients">0</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <small>New Patients</small>
+              <h3 id="newPatients">0</h3>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 text-center">
+              <small>Old Patients</small>
+              <h3 id="oldPatients">0</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Patient Button -->
+        <%if (user.consultationType==="Offline"||user.consultationType==="Both") { %>
+          
+        <div class="row mb-4">
+          <div class="col-12">
+            <button class="btn btn-success w-100 h-100 card p-3 d-flex justify-content-center align-items-center" 
+                    data-bs-toggle="modal" data-bs-target="#patientModal">
+              ＋ Add Patient
+            </button>
+          </div>
+        </div>           
+        <% } %>
+         
+
+        <!-- Patients Cards Grid -->
+        <div class="row g-3 align-items-stretch">
+         <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header text-center" 
+           data-bs-toggle="collapse" 
+           data-bs-target="#todayPatCollapse" 
+           aria-expanded="true" 
+           aria-controls="todayPatCollapse"
+           style="cursor: pointer;">
+        <h3 class="mb-0">Patients Today</h3>
+
+      </div>
+      <div id="todayPatCollapse" class="collapse show">
+        <div class="card-body d-flex flex-column gap-2 scroll-list" id="todayPat" style="max-height: 250px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Most Problems Card -->
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header text-center " 
+           data-bs-toggle="collapse" 
+           data-bs-target="#mostProCollapse" 
+           aria-expanded="true" 
+           aria-controls="mostProCollapse"
+           style="cursor: pointer;">
+        <h3 class="mb-0 ">Most Problems</h3>
+  
+      </div>
+      <div id="mostProCollapse" class="collapse show">
+        <div class="card-body d-flex flex-column gap-2 scroll-list" id="mostPro" style="max-height: 250px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+          <div class="col-12">
+            <div class="card p-3 h-40">
+             <h3 class="text-center">Appointment Requests</h3>
+              <div class="d-flex flex-column gap-2 scroll-list" id="appointment-requests" style="max-height: 200px; overflow-y: auto;">
+                <!-- Appointment cards will be added dynamically via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  console.log("Role from EJS:", "<%= user ? user.role : '' %>");
+</script>

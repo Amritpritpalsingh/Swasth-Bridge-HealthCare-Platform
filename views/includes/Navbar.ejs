@@ -1,0 +1,58 @@
+<!-- Sticky Topbar -->
+<div class="topbar d-flex justify-content-between align-items-center p-2 shadow-sm fixed-top">
+  <button class="btn btn-outline-secondary btn-sm d-md-none" 
+          data-bs-toggle="offcanvas" 
+          data-bs-target="#mobileSidebar">
+    ☰
+  </button>
+
+  <h6 class="mb-0 fw-bold text-truncate">
+    <span class="text-success">Swasth</span><span class="text-primary">Bridge</span>
+  </h6>
+
+  <div class="d-flex align-items-center gap-2">
+    <div class="text-end d-none d-sm-block">
+      <small class="welcome-text d-block">Welcome,</small>
+      <strong><%= user.name %></strong>
+    </div>
+
+    <% 
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = today.toLocaleString('default', { month: 'short' });
+      const year = today.getFullYear();
+      const formattedDate = `${day}-${month}-${year}`;
+    %>
+
+    <span class="date-badge  border d-none d-sm-inline"><%= formattedDate %></span>
+
+    <!-- Notifications -->
+    <button id="notificationBtn" 
+            class="btn btn-outline-secondary btn-sm position-relative" 
+            data-bs-toggle="modal" 
+            data-bs-target="#notificationsModal" 
+            title="Notifications">
+      🔔
+      <span id="notificationBadge" 
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" 
+            style="display:none;">
+        0
+      </span>
+    </button>
+
+    <!-- Profile -->
+    <button id="profileBtn" 
+            class="btn icon-btn btn-outline-secondary btn-sm"  
+            title="Profile"  
+            data-bs-toggle="modal" 
+            data-bs-target="#profileModal"
+            data-user='<%- JSON.stringify(user) %>'>
+      🙎
+    </button>
+  </div>
+</div>
+
+<!-- Push content down -->
+<div class="container-fluid" style="padding-top: 60px;">
+  <!-- Your page content -->
+</div>

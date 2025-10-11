@@ -1,0 +1,56 @@
+<div id="settingsCard" class="card shadow-sm position-absolute p-2"
+     style="display: none; width: 200px; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 1060;">
+
+  <!-- Language Selector -->
+  <button class="btn btn-sm btn-outline-secondary w-100 mb-1" 
+          id="languageBtn" data-bs-toggle="collapse" data-bs-target="#languageOptions" aria-expanded="false">
+    Language
+  </button>
+
+  <div id="languageOptions" class="collapse mt-2 overflow-auto" style="max-height: 280px;">
+    <!-- 28+ Indian languages -->
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="en">English</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="hi">Hindi</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="bn">Bengali</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="ta">Tamil</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="te">Telugu</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="kn">Kannada</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="ml">Malayalam</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="mr">Marathi</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="gu">Gujarati</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="pa">Punjabi</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="or">Odia</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="as">Assamese</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="ks">Kashmiri</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="sd">Sindhi</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="ne">Nepali</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="bn">Bodo</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="kh">Khasi</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="my">Meitei (Manipuri)</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="sa">Sanskrit</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="ti">Tibetan</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="mlr">Mizo</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="lui">Lushei</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="bh">Bihari</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="sa">Sanskrit</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="tn">Tulu</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="kon">Konkani</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 language-option" data-lang="kok">Kokborok</button>
+  </div>
+
+  <!-- Theme Selector -->
+  <button class="btn btn-sm btn-outline-secondary w-100 mb-1" 
+          id="themeBtn" data-bs-toggle="collapse" data-bs-target="#themeOptions" aria-expanded="false">
+    Theme
+  </button>
+
+  <div id="themeOptions" class="collapse mt-2">
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 theme-option" data-theme="light">Light</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 theme-option" data-theme="dark">Dark</button>
+    <button class="btn btn-sm btn-outline-secondary w-100 mb-1 theme-option" data-theme="auto">Auto</button>
+  </div>
+
+  <button class="btn btn-sm btn-outline-secondary w-100 mb-1" id="feedbackBtn">Feedback</button>
+  <button class="btn btn-sm btn-outline-secondary w-100 mb-1" id="editProfileBtn" data-user='<%- JSON.stringify(user) %>'>Edit Profile</button>
+  <a class="btn btn-sm btn-outline-danger w-100" id="logoutBtn" href="/sb/auth/logout">Logout</a>
+</div>

@@ -1,0 +1,68 @@
+<% layout("layouts/mainDoc.ejs") %>
+<!-- APPOINTMENTS -->
+   <input type="hidden" id="userSocketId" value="<%= user ? user._id : '' %>">
+<section id="appointments" class="page active">
+  <h4 class="mb-3">Appointments</h4>
+
+  <!-- Row 1 -->
+  <div class="row g-3 justify-content-center">
+    <!-- Upcoming -->
+    <div class="col-12 col-md-5">
+      <div class="card p-3 h-100">
+        <h6>
+          Upcoming Appointments
+          <span class="badge bg-secondary" id="upCount">0</span>
+        </h6>
+        <div id="upcoming" class="appointments-list">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Past -->
+    <div class="col-12 col-md-5">
+      <div class="card p-3 h-100">
+        <h6>
+          Past Appointments
+          <span class="badge bg-secondary" id="pastCount">0</span>
+        </h6>
+        <div id="past" class="appointments-list">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="row g-3 justify-content-center mt-2">
+    <!-- Confirmed -->
+    <div class="col-12 col-md-5">
+      <div class="card p-3 h-100">
+        <h6>
+          Confirmed Appointments
+          <span class="badge bg-secondary" id="confirmCount">0</span>
+        </h6>
+        <div class="d-flex flex-column gap-2 scroll-list" 
+             id="confirm-appointments" 
+             style="max-height: 200px; overflow-y: auto;">
+          <!-- Confirmed appointment items will be inserted dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Completed -->
+    <div class="col-12 col-md-5">
+      <div class="card p-3 h-100">
+        <h6>
+          Completed Appointments
+          <span class="badge bg-secondary" id="compCount">0</span>
+        </h6>
+        <div id="completed" class="appointments-list">
+          <!-- Filled dynamically -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

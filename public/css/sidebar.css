@@ -1,0 +1,27 @@
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #fafafa;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .nav-link {
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #333;
+}
+.sidebar .nav-link:hover {
+  background: #e8f4f2;
+  color: #0f5132;
+}
+.sidebar .nav-link.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+.custom-offcanvas {
+  width: 220px !important;   /* set your preferred width */
+  max-width: 80%;            /* safety for very small screens */
+}

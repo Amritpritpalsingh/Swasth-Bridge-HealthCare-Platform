@@ -1,0 +1,54 @@
+#upcoming .appt, #past .appt {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+.pill {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+.pill.scheduled { background: #d1fae5; color: #065f46; }
+.pill.urgent { background: #fee2e2; color: #991b1b; }
+.pill.completed { background: #e0e7ff; color: #1e3a8a; }
+#appointments {
+  overflow-x: hidden; /* stop left-right scroll */
+}
+/* Limit card width */
+#appointments .card {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Scrollable list inside each card */
+.appointments-list {
+  max-height: 250px;   /* fixed height */
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.appointments-list {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+/* On mobile: stack neatly and full width */
+@media (max-width: 768px) {
+  #appointments .row {
+    flex-wrap: wrap;      /* ensure stacking */
+  }
+
+  #appointments .col-12 {
+    width: 90% !important; /* full width stack */
+   
+    margin-bottom: 1rem; /* spacing between stacked cards */
+
+  }
+
+  .appointments-list {
+    max-height: 200px; /* still scrollable on mobile */
+  }
+}

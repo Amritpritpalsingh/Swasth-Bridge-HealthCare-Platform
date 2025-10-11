@@ -1,0 +1,52 @@
+<!-- Schedule Appointment Modal -->
+<div class="modal fade" id="scheduleAppointmentModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Schedule Appointment with <span id="appointmentDoctor"></span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Form wrapping body + footer -->
+      <form id="appointmentForm">
+        <!-- Body -->
+        <div class="modal-body">
+          <!-- Consultation Type -->
+
+ 
+
+    <input hidden id="appointmentTypeBtn"  name="appointmentType">
+    
+
+
+
+          <div class="mb-3">
+            <label for="appointmentDate" class="form-label">Date</label>
+            <input type="date" class="form-control" id="appointmentDate" required>
+          </div>
+
+          <input type="hidden" id="appointmentDoctorId">
+
+          <div class="mb-3">
+            <label for="appointmentTime" class="form-label">Time</label>
+            <input type="time" class="form-control" id="appointmentTime" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="appointmentReason" class="form-label">Reason</label>
+            <textarea class="form-control" id="appointmentReason" rows="3" placeholder="Briefly describe your symptoms" required></textarea>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelAppointmentBtn" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" id="confirmAppointmentBtn" class="btn btn-success">Confirm Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

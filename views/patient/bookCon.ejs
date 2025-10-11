@@ -1,0 +1,11 @@
+<%- layout("layouts/mainPat.ejs") %>
+  <input type="hidden" id="userSocketId" value="<%= user ? user._id : '' %>">
+<div class="container mt-4">
+  <h3 class="mb-3">📅 Appointment Status</h3>
+  <input type="hidden" id="userSocketId" value="<%= user._id %>">
+   <input type="hidden" id="userRole" value="<%= user.role %>">
+  <div id="appointmentStatusContainer">
+    <!-- Appointment status will be injected dynamically -->
+    <div class="text-muted">Loading appointment status...</div>
+  </div>
+</div>

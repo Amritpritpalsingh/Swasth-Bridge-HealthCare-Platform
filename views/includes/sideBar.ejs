@@ -1,0 +1,78 @@
+<!-- Sidebar (Desktop) -->
+<aside class="sidebar p-3 d-none d-md-flex flex-column position-relative vh-100">
+  <h4 class="fw-bold mb-4 sidebar-title">Rural Health</h4>
+
+  <nav class="nav flex-column flex-grow-1" id="nav">
+    <% if (user.role === "Doctor") { %>
+      <a href="/sb/doc/dashboard" data-target="dashboard" class="nav-link">🏠 Dashboard</a>
+      <a href="/sb/doc/patients/all" data-target="patients" class="nav-link">👥 Patients</a>
+      <a href="/sb/doc/patients/requests" data-target="appointments" class="nav-link">📆 Appointments</a>
+      <a href="/sb/doc/payments" data-target="appointments" class="nav-link">💵 Verify Payments</a>
+      <button id="mobileNotificationBtn"
+              data-bs-toggle="modal"
+              data-bs-target="#notificationsModal"
+              title="Notifications"
+              class="nav-link custom-link p-2 btn-link-like">
+        🔔 Notifications
+      </button>
+    <% } else if (user.role === "Patient") { %>
+      <a href="/sb/pat/dashboard" data-target="dashboard" class="nav-link active">🏠 Dashboard</a>
+      <a href="/sb/pat/appointments" data-target="appointments" class="nav-link">📆 Appointments</a>
+      <button id="mobileNotificationBtn"
+              data-bs-toggle="modal"
+              data-bs-target="#notificationsModal"
+              title="Notifications"
+              class="nav-link custom-link p-2 btn-link-like">
+        🔔 Notifications
+      </button>
+    <% } %>
+  </nav>
+
+  <!-- Settings Button (Fixed at bottom) -->
+  <div class="mt-auto border-top pt-3 text-center">
+    <button id="settingsBtn" type="button" class="btn btn-outline-secondary btn-sm w-100">
+      ⚙ Settings
+    </button>
+  </div>
+</aside>
+
+<!-- Offcanvas Sidebar (Mobile) -->
+<div class="offcanvas offcanvas-start custom-offcanvas" tabindex="-1" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body d-flex flex-column justify-content-between p-0 position-relative">
+    <nav class="nav flex-column text-start mt-3 px-3">
+      <% if (user.role === "Doctor") { %>
+        <a href="/sb/doc/dashboard" class="nav-link custom-link p-2 mobile-nav-link">Dashboard</a>
+        <a href="/sb/doc/patients/all" class="nav-link custom-link p-2 mobile-nav-link">Patients</a>
+        <a href="/sb/doc/patients/requests" class="nav-link custom-link p-2 mobile-nav-link">Appointments</a>
+         <a href="/sb/doc/payments" data-target="appointments" class="nav-link custom-link p-2 mobile-nav-link">Verify Payments</a>
+        <button id="mobileNotificationBtn"
+                data-bs-toggle="modal"
+                data-bs-target="#notificationsModal"
+                title="Notifications"
+                class="nav-link custom-link p-2 btn-link-like">
+          Notifications
+        </button>
+      <% } else if (user.role === "Patient") { %>
+       <a href="/sb/pat/dashboard" class="nav-link custom-link p-2 mobile-nav-link">Dashboard</a>
+    <a href="/sb/pat/appointments" class="nav-link custom-link p-2 mobile-nav-link">Appointments</a>
+    <button id="mobileNotificationBtn"
+            data-bs-toggle="modal"
+            data-bs-target="#notificationsModal"
+            title="Notifications"
+            class="nav-link custom-link p-2 btn-link-like mobile-nav-link">
+      Notifications
+    </button>
+      <% } %>
+    </nav>
+
+    <div class="p-3 border-top text-center position-relative">
+      <button id="settingsBtn" type="button" class="btn btn-outline-secondary btn-sm w-100">
+        ⚙ Settings
+      </button>
+    </div>
+  </div>
+</div>

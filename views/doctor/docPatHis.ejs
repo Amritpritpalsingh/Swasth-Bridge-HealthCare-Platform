@@ -1,0 +1,62 @@
+<% layout("layouts/mainDoc.ejs") %>
+  <input type="hidden" id="userSocketId" value="<%= user ? user._id : '' %>">
+<section id="patients" class="page active container-fluid py-3">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-3 gap-2">
+    <h4 class="mb-0">Patients</h4>
+   
+  </div>
+
+  <!-- Search row -->
+  <div class="row mb-3 justify-content-center">
+    <div class="col-12 col-md-6">
+      <div class="input-group">
+        <input type="text" id="patientSearch" class="form-control" placeholder="Search patient...">
+        <button id="patientSearchBtn" class="btn btn-outline-success">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Table card (desktop / tablet) -->
+  <div class="card table-card shadow-sm mx-auto w-100 d-none d-sm-flex">
+    <div class="table-responsive">
+      <table class="table table-striped align-middle mb-0" id="patientsTable">
+        <thead class="table-success">
+          <tr>
+            <th>ID</th><th>Name</th><th>Age</th>
+            <th>Gender</th><th>Diagnosis</th><th>Last Visit</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTableBody">
+          <% patients.forEach((p, i) => { %>
+            <tr>
+              <td><%= p.patientId || `P-${i+1}` %></td>
+              <td><%= p.name %></td>
+              <td><%= p.age %></td>
+              <td><%= p.gender %></td>
+              <td><%= p.diagnosis %></td>
+              <td><%= p.lastVisit ? p.lastVisit.toISOString().split("T")[0] : "-" %></td>
+            </tr>
+          <% }) %>
+         
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Card list (mobile only) -->
+  <div class="d-sm-none" id="patientsCardList">
+    <div class="row g-3" id="patientsCardListBody">
+      <% patients.forEach((p, i) => { %>
+        <div class="col-12">
+          <div class="card p-3 shadow-sm">
+            <h6 class="mb-1"><%= p.name %> <small class="text-muted">(<%= p.patientId || `P-${i+1}` %>)</small></h6>
+            <p class="mb-1"><strong>Age:</strong> <%= p.age %> | <strong>Gender:</strong> <%= p.gender %></p>
+            <p class="mb-1"><strong>Diagnosis:</strong> <%= p.diagnosis %></p>
+            <p class="mb-0"><strong>Last Visit:</strong> <%= p.lastVisit ? p.lastVisit.toISOString().split("T")[0] : "-" %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+

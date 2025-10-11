@@ -1,0 +1,41 @@
+<% layout("layouts/mainReg.ejs") %>
+
+<div class="card  p-4 rounded-4 w-100" style="max-width: 380px;" id="loginPage">
+  <div class="card  p-4 rounded-4 w-100" style="max-width: 380px;" id="loginPage">
+    <div class="logo text-center mb-3">
+  <span class="text-success">Swasth</span><span class="text-primary">Bridge</span>
+</div>
+    <h2 class="mb-1 text-center">Welcome Back!</h2>
+    <p class="text-muted text-center">Login to access your account.</p>
+
+    <!-- Role Selector -->
+    <div class="role-selector mb-3 d-flex justify-content-center gap-2 flex-wrap">
+      <button id="patientBtn" class="btn btn-outline-success active">Patient</button>
+      <button id="doctorBtn" class="btn btn-outline-success">Doctor</button>
+      <button id="pharmacyBtn" class="btn btn-outline-success" disabled>Pharmacy</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" action="/sb/auth/login" method="POST">
+  <input type="hidden" id="roleInput" name="role" value="Patient">
+  <div id="extraField"></div>
+  <input type="email" class="form-control mb-2" id="loginEmail" name="email" placeholder="Email Address" required>
+  <input type="password" class="form-control mb-3" id="loginPassword" name="password" placeholder="Password" required>
+  <button type="submit" class="btn btn-success w-100">Login →</button>
+</form>
+
+    <div class="divider text-center my-3">OR</div>
+
+    <!-- Google login -->
+    <a id="googleLoginupBtn" herf=""
+       class="google-btn d-flex align-items-center justify-content-center border rounded py-2 text-decoration-none">
+      <img src="https://www.svgrepo.com/show/355037/google.svg" 
+           alt="Google" width="20" height="20" style="margin-right:8px;">
+      Continue with Google
+    </a>
+
+    <div class="link-text text-center mt-3">
+      Don’t have an account? <a href="/sb/auth/signup">Sign up</a>
+    </div>
+  </div>
+</div>

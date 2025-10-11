@@ -1,0 +1,55 @@
+/* General Card + Logo */
+.card { border: none; background: #fff; }
+.logo { font-size: 26px; font-weight: 600; color: #0a7d6b; margin-bottom: 10px; }
+
+/* Role buttons */
+.role-selector .btn.active {
+  background-color: #0a7d6b;
+  color: white;
+  border-color: #0a7d6b;
+}
+.role-selector .btn { transition: all 0.2s ease; }
+
+/* Google button */
+.google-btn {
+  background: #fff;
+  transition: 0.2s;
+}
+.google-btn:hover {
+  background: #f1f1f1;
+}
+
+/* Divider */
+.divider { font-size: 14px; color: #888; }
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+  .card { max-width: 95%; padding: 1.5rem; }
+  .role-selector .btn { flex: 1 1 auto; font-size: 14px; }
+  #loginWrapper, #signupWrapper {
+    padding: 2rem 1rem;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .right-panel {
+    padding: 2rem 1rem;
+  }
+  
+}
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    max-width: 95%;
+  }
+}
+.right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;   /* fill screen vertically */
+  padding: 1rem;       /* spacing for mobile */
+}
+

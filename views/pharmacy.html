@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharmacy Admin Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background: var(--dark); color: #1e293b; }
+
+    :root {
+        --primary: #20c997;     /* Teal Green */
+        --secondary: #0f766e;   /* Deep Teal */
+        --dark: #f6fffb;        /* Light Green-White Background */
+        --light-dark: #ffffff;  /* Card background */
+        --gray: #6b7280;        /* Neutral text gray */
+    }
+
+    /* Header */
+    header {
+        height: 60px;
+        background: var(--primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        position: sticky; top: 0; z-index: 100;
+        color: #fff;
+    }
+    .logo { font-size: 1.2rem; font-weight: bold; color: #fff; }
+    .menu-btn, .notification-btn {
+        background: none; border: none; color: #fff; font-size: 1.2rem;
+        cursor: pointer; margin-right: 10px;
+    }
+    .left-controls { display: flex; align-items: center; gap: 10px; }
+
+    /* Layout */
+    .container { display: flex; }
+    .sidebar {
+        width: 240px; background: var(--secondary);
+        padding: 1rem 0; transition: transform 0.3s ease;
+        min-height: 100vh; color: #fff;
+    }
+    .sidebar.closed { transform: translateX(-100%); }
+    .sidebar h2 { text-align: center; color: #fff; margin-bottom: 1rem; }
+    .nav-menu { list-style: none; }
+    .nav-item {
+        display: block; padding: 0.9rem 1.2rem;
+        color: #fff; text-decoration: none;
+        transition: background 0.2s;
+    }
+    .nav-item:hover, .nav-item.active { background: #20c997; color: #fff; }
+
+    .main-content { flex: 1; padding: 1.5rem; }
+
+    /* Pharmacy ID */
+    .pharmacy-id-box {
+        background: var(--light-dark);
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: #1e293b;
+    }
+    .pharmacy-id-box h4 { font-weight: normal; color: var(--gray); margin-bottom: 5px; }
+    .pharmacy-id {
+        background: #d1fae5;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-weight: bold;
+        color: var(--secondary);
+    }
+
+    /* Dashboard Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .card {
+        background: var(--light-dark);
+        padding: 1rem;
+        border-radius: 10px;
+        text-align: center;
+        color: #1e293b;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(32, 201, 151, 0.25);
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+
+    /* Chart + Orders */
+    .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .chart-box, .orders, .analytics {
+        background: var(--light-dark); padding: 1rem; border-radius: 10px;
+        text-align: center; color: #1e293b;
+    }
+    .chart-placeholder {
+        height: 250px; display: flex; align-items: center; justify-content: center;
+        color: var(--gray); font-size: 0.9rem; border: 2px dashed #d1d5db;
+        border-radius: 8px;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 0.8rem; border-bottom: 1px solid #e5e7eb; }
+    th { color: var(--gray); }
+    .status { padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; color: #fff; }
+    .delivered { background: #16a34a; }
+    .pending { background: #f59e0b; }
+    .cancelled { background: #dc2626; }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+        .sidebar { position: fixed; top: 0; left: 0; height: 100%; z-index: 200; }
+        .main-content { margin-left: 0; }
+        .grid-2 { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="left-controls">
+        <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+        <div class="logo">Pharmeasy</div>
+    </div>
+    <div>
+        <button class="notification-btn"><i class="fas fa-bell"></i></button>
+    </div>
+</header>
+
+<div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar closed" id="sidebar">
+        <h2>Dashboard</h2>
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="pmedicine.html" class="nav-item" target="_self"><i class="fas fa-pills"></i> Medicine</a>
+            <a href="#" class="nav-item"><i class="fas fa-file-invoice"></i> Invoice</a>
+            <a href="#" class="nav-item"><i class="fas fa-industry"></i> Manufacturer</a>
+            <a href="#" class="nav-item"><i class="fas fa-boxes"></i> Inventory</a>
+            <a href="#" class="nav-item"><i class="fas fa-file-alt"></i> Reports</a>
+            <a href="#" class="nav-item"><i class="fas fa-user"></i> Accounts</a>
+            <a href="#" class="nav-item"><i class="fas fa-undo"></i> Returns</a>
+            <a href="#" class="nav-item"><i class="fas fa-cog"></i> Settings</a>
+            <a href="#" class="nav-item" id = "logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Pharmacy ID -->
+        <div class="pharmacy-id-box">
+            <h4>Your Unique Pharmacy ID</h4>
+            <div class="pharmacy-id">PHARM-ADM-1023</div>
+            <p style="font-size:0.8rem; color:var(--gray); margin-top:5px;">Share this ID with your admin to access records</p>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+            <div class="card"><h3>Ordered Items</h3><p>658</p></div>
+            <div class="card"><h3>Amount Paid</h3><p>₹70K</p></div>
+            <div class="card"><h3>Pending Payments</h3><p>₹25K</p></div>
+            <div class="card"><h3>Out of Stock</h3><p>846</p></div>
+        </div>
+
+        <!-- Charts (Backend Placeholder) -->
+        <div class="grid-2">
+            <div class="chart-box">
+                <h3>Sales Analytics</h3>
+                <div class="chart-placeholder">[ Backend Data Placeholder ]</div>
+            </div>
+            <div class="analytics">
+                <h3>Patient by Gender</h3>
+                <div class="chart-placeholder">[ Backend Data Placeholder ]</div>
+            </div>
+        </div>
+
+        <!-- Orders -->
+        <div class="orders">
+            <h3>Recent Orders</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Date</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amitriptyline tablet</td>
+                        <td>12/2/22</td>
+                        <td>25</td>
+                        <td><span class="status delivered">Delivered</span></td>
+                        <td>₹2456</td>
+                    </tr>
+                    <tr>
+                        <td>Amlodipine besylate</td>
+                        <td>12/2/22</td>
+                        <td>35</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>₹754</td>
+                    </tr>
+                    <tr>
+                        <td>Amitriptyline tablet</td>
+                        <td>12/2/22</td>
+                        <td>18</td>
+                        <td><span class="status cancelled">Cancelled</span></td>
+                        <td>₹8995</td>
+                    </tr>
+                    <tr>
+                        <td>Hydrochlorothiazide</td>
+                        <td>12/2/22</td>
+                        <td>40</td>
+                        <td><span class="status delivered">Delivered</span></td>
+                        <td>₹1568</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script>
+
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    menuBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("closed");
+    });
+
+    // ✅ Logout function
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure you want to logout?")) {
+            // Clear saved login session if any
+            localStorage.removeItem("loggedInUser");
+            sessionStorage.removeItem("loggedInUser");
+
+            // Redirect to login.html
+            window.location.href = "login.html";
+        }
+    });
+</script>
+
+</body>
+</html>
