@@ -47,23 +47,25 @@ SwasthBridge/
 ├─ models/ # Mongoose schemas (Doctor, Patient, Appointment)
 ├─ public/ # Static files (CSS, JS, images)
 ├─ routes/ # Express routes
-├─ utils/ # Utilities (multer config, async catch, patient ID generator)
+├─ utils/ # Utilities (Multer config, async wrapper, patient ID generator)
 ├─ views/ # EJS templates
-├─ .env # Environment variables (do NOT upload)
+├─ .env # Environment variables (DO NOT upload)
 ├─ .gitignore # Ignored files
-├─ package.json
-└─ server.js # Entry point
+├─ package.json # Project dependencies and scripts
+└─ server.js # Entry point of the application
 
 ---
 
 ## Environment Variables
 Create a `.env` file in the root directory with the following variables:
-  PORT By Default 6006
-  MONGO_URI=your_mongodb_connection_string
-  SESSION_SECRET=your_session_secret
-  CLOUDINARY_CLOUD_NAME=your_cloud_name
-  CLOUDINARY_API_KEY=your_api_key
-  CLOUDINARY_API_SECRET=your_api_secret
+PORT By Default 6006
+MONGO_URI=your_mongodb_connection_string
+SESSION_SECRET=your_session_secret
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET==your_client_secret
 
 **Important:** Never commit `.env` to GitHub.
 
