@@ -113,6 +113,7 @@ GOOGLE_CLIENT_SECRET==your_client_secret
 ---
 
 ## Deployment
+- **Live URL: https://swasth-bridge-health-care-platform.vercel.app/sb/auth/login**
 - **Recommended Hosting Platforms:** Vercel, Render, Heroku  
 - **Environment Variables:** Set in the hosting platform (refer to `.env` file setup).  
 - **Database:** Use MongoDB Atlas for cloud storage.  
