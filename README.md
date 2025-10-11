@@ -39,32 +39,38 @@ SwasthBridge is a modern web application designed to efficiently connect **patie
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
-SwasthBridge/
-│
-├─ controllers/ # Backend route logic
-├─ models/ # Mongoose schemas (Doctor, Patient, Appointment)
-├─ public/ # Static files (CSS, JS, images)
-├─ routes/ # Express routes
-├─ utils/ # Utilities (Multer config, async wrapper, patient ID generator)
-├─ views/ # EJS templates
-├─ .env # Environment variables (DO NOT upload)
-├─ .gitignore # Ignored files
-├─ package.json # Project dependencies and scripts
-└─ server.js # Entry point of the application
+SwasthBridge/  
+├─ controllers/      # Backend logic  
+├─ models/           # MongoDB schemas  
+├─ public/           # Static files (CSS, JS, images)  
+├─ routes/           # Express routes  
+├─ utils/            # Helpers (multer, async catch, ID generator)  
+├─ views/            # EJS templates  
+├─ .env              # Environment variables (ignored)  
+├─ .gitignore  
+├─ package.json  
+└─ server.js
 
 ---
 
 ## Environment Variables
 Create a `.env` file in the root directory with the following variables:
 PORT By Default 6006
+
 MONGO_URI=your_mongodb_connection_string
+
 SESSION_SECRET=your_session_secret
+
 CLOUDINARY_CLOUD_NAME=your_cloud_name
+
 CLOUDINARY_API_KEY=your_api_key
+
 CLOUDINARY_API_SECRET=your_api_secret
+
 GOOGLE_CLIENT_ID=your_client_id
+
 GOOGLE_CLIENT_SECRET==your_client_secret
 
 **Important:** Never commit `.env` to GitHub.
