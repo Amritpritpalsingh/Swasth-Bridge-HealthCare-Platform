@@ -79,7 +79,7 @@ GOOGLE_CLIENT_SECRET==your_client_secret
 
 ## Installation & Setup
 1. **Clone the repository**
-   ```bash git clone https://github.com/yourusername/SwasthBridge.git cd SwasthBridge```
+   ```bash git clone https://github.com/Amritpritpalsingh/SwasthBridge.git cd SwasthBridge```
 2. **Install dependencies**
    ```npm install```
 3. **Add environment variables in .env**
@@ -113,7 +113,7 @@ GOOGLE_CLIENT_SECRET==your_client_secret
 ---
 
 ## Deployment
-- **Live URL: https://swasth-bridge-health-care-platform.vercel.app/sb/auth/login**
+- **Live URL: [https://swasth-bridge-health-care-platform.vercel.app/sb/auth/login](https://swasth-bridge-healthcare-platform.onrender.com/sb/auth/login)**
 - **Recommended Hosting Platforms:** Vercel, Render, Heroku  
 - **Environment Variables:** Set in the hosting platform (refer to `.env` file setup).  
 - **Database:** Use MongoDB Atlas for cloud storage.  
